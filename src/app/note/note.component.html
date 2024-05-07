@@ -1,16 +1,30 @@
 <div class="mainDiv">
     <div class="noteDiv">
-        <input type="text">
-        <input type="text">
-        <button>Съхрани бележката</button>
+        <input [(ngModel)]="modelTitle" type="text" placeholder="Заглавие на бележката">
+        @if (modelTitle.length < modelTitleSize) {
+            <div class="error">Заглавието трябва да има минимум 5 символа</div>
+        }
+        <input [(ngModel)]="modelContent" type="text" placeholder="Съдържание на бележката">
+        @if (modelContent.length < modelContentSize) {
+            <div class="error">Съдържанието трябва да има минимум 7 символа</div>
+        }
+        <button (click)="addNote()" class="button">Съхрани бележката</button>
     </div>
     <div class="noteListDiv">
         <div class="listDiv">
-            
+            @for (element of noteCollection; track $index) {
+                <div (click)="selectNote($index)" class="element">
+                  <div>{{element.title}}</div>
+                  <div>{{element.content}}</div>
+                  <!-- <button (click)="processVideoRecord(element, $index)">Редактирай</button> -->
+                </div>
+              }
         </div>
         <div class="listButtonDiv">
-            <button>Изтрии</button>
-            <button>Редактирай</button>
+            @if (isNoteSelected) {
+                <button (click)="deleteNote()">Изтрии</button>
+                <button (click)="editNote()">Редактирай</button>
+            }
         </div>
     </div>
 </div>

@@ -39,3 +39,10 @@
     border: solid black 1px;
     display: flex;
 }
+.element{
+    border: solid black 2px;
+}
+.error{
+    color: #ff0000;
+    font: bold;
+}
