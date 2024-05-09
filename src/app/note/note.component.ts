@@ -20,7 +20,7 @@ export class NoteComponent {
 
   public noteCollection = [
     {
-      title: 'asdasd', content: 'asdasd'
+      title: '', content: ''
     }
   ]
 
